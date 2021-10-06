@@ -5,16 +5,16 @@ pub struct Block {
     pub data: Vec<u8>,
     pub hash: u64,
     pub nonce: usize,
-    pub previous_hash: Option<u64>,
+    pub phash: Option<u64>,
 }
 
 impl Block {
-    pub fn new(data: Vec<u8>, hash: u64, nonce: usize, previous_hash: Option<u64>) -> Self {
+    pub fn new(data: Vec<u8>, hash: u64, nonce: usize, phash: Option<u64>) -> Self {
         Block {
             data,
             hash,
             nonce,
-            previous_hash,
+            phash,
         }
     }
 

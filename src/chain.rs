@@ -8,7 +8,6 @@ pub struct Blockchain {
 
 impl Blockchain {
     pub fn new(difficulty: u32) -> Self {
-        env_logger::init();
         Blockchain {
             blocks: vec![Block::new("ORIGIN".as_bytes().to_vec(), 0, 0, None)],
             difficulty,
@@ -16,7 +15,7 @@ impl Blockchain {
         }
     }
 
-    pub fn add_data(&mut self, data: Vec<u8>) {
+    pub fn add_to_pool(&mut self, data: Vec<u8>) {
         self.pool.push(data);
     }
 
@@ -30,11 +29,11 @@ impl Blockchain {
             log::error!("Hash value does not meet a requirement - PoW cannot be verified!");
             return false;
         }
-        if block.previous_hash.unwrap() != self.blocks.last().unwrap().hash {
+        if block.phash.unwrap() != self.blocks.last().unwrap().hash {
             log::error!("Unknown previous hash value - PoW cannot be verified!");
             return false;
         }
-        log::info!("Proof of Work Verified!");
+        log::info!("PoW Verified!");
         true
     }
 

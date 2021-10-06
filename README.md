@@ -1,21 +1,14 @@
 # blockchain
 
-A Blockchain implementation in pure Rust.
+A toy, Proof-of-Work-based Blockchain implementation in pure Rust.
 
 ## API
 
-Below find an example usage of the library:
+The app is located at [`src/main.rs`](src/main.rs) and can be run using the
+command below:
 
-```rust
-use blockchain::Blockchain;
-
-fn main() {
-    let mut blockchain = Blockchain::new(20);
-    for data in ["what", "a", "wonderful", "world"] {
-        blockchain.add_data(data.as_bytes().to_vec());
-    }
-    blockchain.mine();
-}
+```console
+RUST_LOG=info cargo run --release
 ```
 
 ## References
